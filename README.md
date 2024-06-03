@@ -38,17 +38,21 @@ cd nagios-core-4.4.9
 #Crea un directorio donde se copiarán los archivos necesarios:
 
 sudo mkdir /opt/nagios-core-docker
+
 sudo cd /opt/nagios-core-docker/
 
 #Descarga los archivos necesarios:
 
 wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.9.tar.gz
+
 tar xzf nagios-4.4.9.tar.gz
 
 wget https://github.com/nagios-plugins/nagios-plugins/releases/download/release-2.4.2/nagios-plugins-2.4.2.tar.gz
+
 tar xzf nagios-plugins-2.4.2.tar.gz
 
 wget https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-4.1.0/nrpe-4.1.0.tar.gz
+
 tar xzf nrpe-4.1.0.tar.gz
 
 **Verificación de integridad de archivos descargados:** Se recomienda verificar la integridad de los archivos descargados mediante la comprobación de su suma de comprobación (checksum).
