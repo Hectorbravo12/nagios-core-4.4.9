@@ -24,6 +24,7 @@ sudo usermod -a -G docker ec2-user
 exit
 
 #Descargar git
+
 sudo yum install git -y
 
 #Clonar repositorio
