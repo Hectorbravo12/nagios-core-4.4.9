@@ -6,11 +6,30 @@ Este conjunto de instrucciones te guiará a través del proceso de creación y c
 
 La creación de una imagen Docker de Nagios Core facilita la implementación y administración de un sistema de monitoreo de red altamente efectivo. Esta guía te proporcionará los pasos necesarios para llevar a cabo este proceso de manera exitosa.
 
-## 1. Preparación del entorno
-
 Antes de comenzar, asegúrate de tener una instancia EC2 de Amazon Linux con acceso SSH y permisos de administrador. Además, verifica que tengas una conexión a Internet desde la instancia EC2. (en caso de hacerlo en AWS)
 
-Crea un directorio donde se copiarán los archivos necesarios:
+## 1. Preparación del entorno
+#Recomendaciones si esta ejecutando en EC2
+
+sudo yum update -y
+sudo yum install docker -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -a -G docker ec2-user
+exit
+
+#Descargar git
+sudo yum install git -y
+
+#Clonar repositorio
+
+git clone https://github.com/Hectorbravo12/nagios-core-4.4.9.git
+
+#Navega al Directorio del Repositorio
+
+cd nagios-core-4.4.9
+
+#Crea un directorio donde se copiarán los archivos necesarios:
 
 mkdir /opt/nagios-core-docker
 cd /opt/nagios-core-docker/
@@ -39,13 +58,13 @@ NAGIOSADMIN_PASSWORD=password
 
 Construye la imagen Docker utilizando el Dockerfile proporcionado.
 
-docker build -t nagios-core:4.4.9 .
+docker build -t nagios-core-4.4.9 .
 
 ## 4. Ejecución del contenedor Docker
 
 Crea y ejecuta el contenedor de Nagios-Core utilizando el siguiente comando:
 
-docker run --name nagios-core-4.4.9 -dp 80:80 nagios-core:4.4.9
+docker run --name nagios-core-4.4.9 -dp 80:80 nagios-core-4.4.9
 
 Si necesitas anular las credenciales definidas en el archivo `.env`, usa el siguiente comando:
 
