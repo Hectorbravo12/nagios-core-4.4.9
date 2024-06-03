@@ -12,10 +12,15 @@ Antes de comenzar, asegúrate de tener una instancia EC2 de Amazon Linux con acc
 #Recomendaciones si esta ejecutando en EC2
 
 sudo yum update -y
+
 sudo yum install docker -y
+
 sudo systemctl start docker
+
 sudo systemctl enable docker
+
 sudo usermod -a -G docker ec2-user
+
 exit
 
 #Descargar git
@@ -31,10 +36,10 @@ cd nagios-core-4.4.9
 
 #Crea un directorio donde se copiarán los archivos necesarios:
 
-mkdir /opt/nagios-core-docker
-cd /opt/nagios-core-docker/
+sudo mkdir /opt/nagios-core-docker
+sudo cd /opt/nagios-core-docker/
 
-Descarga los archivos necesarios:
+#Descarga los archivos necesarios:
 
 wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.9.tar.gz
 tar xzf nagios-4.4.9.tar.gz
@@ -56,13 +61,13 @@ NAGIOSADMIN_PASSWORD=password
 
 ## 3. Compilación de la imagen Docker
 
-Construye la imagen Docker utilizando el Dockerfile proporcionado.
+#Construye la imagen Docker utilizando el Dockerfile proporcionado.
 
 docker build -t nagios-core-4.4.9 .
 
 ## 4. Ejecución del contenedor Docker
 
-Crea y ejecuta el contenedor de Nagios-Core utilizando el siguiente comando:
+#Crea y ejecuta el contenedor de Nagios-Core utilizando el siguiente comando:
 
 docker run --name nagios-core-4.4.9 -dp 80:80 nagios-core-4.4.9
 
@@ -72,7 +77,7 @@ docker run -e NAGIOSADMIN_USER_OVERRIDE=monadmin -e NAGIOSADMIN_PASSWORD_OVERRID
 
 ## 5. Acceso a la interfaz web principal de Nagios
 
-Verifica si todo está bien accediendo a la interfaz web de Nagios Core en:
+#Verifica si todo está bien accediendo a la interfaz web de Nagios Core en:
 
 http://docker-host-IP-or-hostname/nagios/
 
